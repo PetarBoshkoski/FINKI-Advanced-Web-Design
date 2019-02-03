@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div id="fileArea">Upload file(s)<br/><br/>
+<input type="file" value="Choose File"> <br/>
+</div>
+<button onclick="addFile()">Add new File</button>
+<button onclick="removeFile()">Remove Last File</button>
+
+
+<script type="text/javascript">
+	
+		var p = document.getElementById("fileArea");
+		
+		function addFile() {
+    		var newElement = document.createElement('input');
+    		var x = document.createElement('br');
+   			newElement.setAttribute('type', 'file');	
+    		p.appendChild(newElement);
+    		p.appendChild(x);
+		}
+		function removeFile()  {
+            var inputElements = document.getElementsByTagName("input");
+            var posleden = inputElements[inputElements.length - 1];
+            if (inputElements.length === 1) {
+            } else {
+                p.removeChild(posleden);
+            }
+        }
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	Open the console.
+	
+<script type="text/javascript">
+	
+	var dateSingleton = (function() {
+		var instance;
+		this.name = name;
+		var createObject = function(name) {
+
+			console.log("This object was created at: " + Date.now());
+		}
+
+		var createInstance = function() {
+			return {
+			getTime: createObject
+			}
+		}
+		return {
+			getInstance: function() {
+				return instance || (instance = createInstance());
+			}
+		}
+	})();
+
+	console.log("Testing Singleton !!!");
+	console.log("Creating i1");
+	i1 = new dateSingleton.getInstance().getTime();
+	console.log(i1);
+	console.log("Creating i2 at time: " + Date.now());
+	i2 = new dateSingleton.getInstance().getTime();
+	console.log(i2);
+
+	console.log("Checking if i1 and i2 are the same variable: " + (i1==i2));
+	console.log("Creating i3.");
+	i3 = new dateSingleton.getInstance().getTime();
+	console.log("Checking if i1 and i3 are the same variable: " + (i1==i3));
+	console.log("Checking if i2 and i3 are the same variable: " + (i2==i3));
+	console.log("Checking if i1 and i2 are the same variable: " + (i1==i2));
+</script>
+</body>
+</html>

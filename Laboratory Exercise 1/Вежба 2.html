@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Напреден Веб Дизајн Вежби</h1>
+<p id="prv">Paragraph no: 1 <br></p>
+<p id="vtor">Paragraph no: 2</p>
+<button onclick="yourFunctionName()">Array Iteration</button>
+<button onclick="yourFunctionName1()">Show Arrays Length</button>
+<script>
+	var numbers = [1,2,3,4,5];
+	var cars = ["BMW","Mercedes","Volkswagen","Ford","Ferrari"];
+ var p1 = document.getElementById("prv");
+  function yourFunctionName(){
+  	var vkupno=0;
+    var brojac=0;
+    for(var j=0;j<numbers.length;j++) {
+    	brojac++;
+    	vkupno+=j;
+    }
+
+    for(var i=0; i< cars.length;i++) {
+    	p1.innerHTML+= i+1 + "." + " " + cars[i] + " ";
+    }
+    p1.innerHTML+="<br>" + "The sum of the numbers is: " + vkupno + " and the Average is: " + vkupno/brojac;
+
+ //your code
+ }
+ var p2 = document.getElementById("vtor");
+  function yourFunctionName1(){
+    vtor.innerHTML = "Paragraph no: 2" + "<br>" + "Length of numbers is: " + numbers.length + "<br>" + "Length of cars is: " + cars.length;
+ //your code
+ }
+</script>
+</body>
+</html>

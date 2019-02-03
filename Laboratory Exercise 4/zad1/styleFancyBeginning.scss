@@ -1,0 +1,89 @@
+
+//dodadete go bodyStyle.scss dokumentot
+@import "bodyStyleBeginning.scss";
+
+$font-first: 'Helvetica', 'sans-serif';
+$fontweight: bold;
+$textWidth: 1035px;
+$mar_left: 150px;
+$font-second: 'Times New Roman', 'Times', 'serif';
+$height: 300px;
+$img_width : 250px;
+$background_color: lightblue;
+$left: 140px;
+
+$right: $left*7;
+
+#firstHeader {
+  margin-left: $mar_left;
+}
+img {
+  //height: $height;
+  width: $img_width;
+  margin-top: 40px;
+}
+.first {
+  //iskoristete promenliva za fontot
+  font-family: $font-first;
+  font-weight: $fontweight;
+  margin-left: $mar_left;
+  width: $textWidth;
+}
+
+
+.second{
+  //iskoristete promenliva za fontot
+  font-family: $font-second;
+}
+
+.containerOne{
+  height: $height;
+  background: $background-color;
+  //dodadete visina na container-ot
+
+  //dodadete boja za container-ot
+  .left{
+    //extend za position
+    //top: 240px;
+    margin-left: $left;
+    //position: absolute;
+    //margin-left: $left;
+    //definirajte prostor od levo i od gore za ovoj div
+  }
+
+  .right{
+    //position: absolute;
+    margin-left: $left*2 + $left*5;
+    margin-top: -$left*2.00;
+    //definirajte prostor od levo i od gore za ovoj div kako zbir od .left div-ot i dopolnitelnoto
+    // potrebno rastojanie od levo
+  }
+}
+
+.boxes{
+  //zaednicki karakteristiki
+  border: 2px solid;
+  width: 150px;
+  height: 50px;
+  text-align: center; 
+  margin-left: ($right/2)+80px;
+  margin-top: -$left;
+}
+
+.containerTwo{
+
+  position: absolute;
+  //definirajte ja pozicijata
+
+  .boxOne{
+    @extend .boxes;
+    border: 2px solid red;
+    //dodadete go veke definiraniot kod vo .boxes i soodvetno dopolnete go
+  }
+  .boxTwo{
+    @extend .boxes;
+    border: 2px solid blue;
+    //dodadete go veke definiraniot kod vo .boxes i soodvetno dopolnete go
+  }
+
+}

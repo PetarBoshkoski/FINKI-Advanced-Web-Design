@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	
+<script type="text/javascript">
+
+
+
+	function difference(lista1, lista2){
+		lista1 = oneLevelList(lista1);
+		lista2 = oneLevelList(lista2);
+
+		var lista = lista1.concat(lista2);
+
+		var noDiplicates = [];
+
+		lista.forEach(function(a){
+			if(noDiplicates.indexOf(a) == -1)noDiplicates.push(a);
+		});
+		return noDiplicates;
+	}
+	
+</script>
+</body>
+</html>

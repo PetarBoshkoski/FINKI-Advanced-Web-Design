@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>Напреден Веб Дизајн Вежби</h1>
+<p id="prv"><b>Paragraph no: 1 </b></p>
+<p id="vtor"><b>Paragraph no: 2</b></p>
+<button onclick="yourFunctionName()">Calculate Perimetar</button>
+
+<script>
+	//your code
+ function Rectangle(width, height) {
+  this.width = width;
+  this.height = height;
+
+  Rectangle.prototype.PrintRectangle = function() {
+    return "Rectangle width is: " + this.width + " and Rectangle height is: " + this.height;
+  }
+  Rectangle.prototype.RectanglePerimeter = function() {
+    return 2 * (this.height) + 2 * (this.width);
+  }
+ }
+
+ var r1 = new Rectangle(10,10);
+ var r2 = new Rectangle(11,10);
+ 
+ var p1 = document.getElementById("prv");
+ var p2 = document.getElementById("vtor");
+ function yourFunctionName() {
+  p1.innerHTML = "<b>Paragraph no: 1</b>" + "<br>"+ r1.PrintRectangle() + "<br>" + r2.PrintRectangle();
+
+  if(r1.RectanglePerimeter() > r2.RectanglePerimeter()) {
+    p2.innerHTML = "<b>Paragraph no: 2</b>" + "<br> The biggest Rectange has perimeter of " + r1.RectanglePerimeter();
+  }
+  else if (r1.RectanglePerimeter() < r2.RectanglePerimeter()){
+    p2.innerHTML = "<b>Paragraph no: 2</b>" + "<br> The biggest Rectange has perimeter of " + r2.RectanglePerimeter();
+  }
+  else {
+    p2.innerHTML = "<b>Paragraph no: 2</b>" + "<br> Rectangle perimeters are equal";
+  }
+
+ }
+</script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<p id="demo"></p>
+<button onclick="myFunction()">Klikni za sledniot Fibonacci broj</button>
+<script type="text/javascript">
+	
+function add(){
+	var prethoden =0;
+	var momentalen =1;
+	var sleden =1;
+
+	return function() {
+		sleden = prethoden+momentalen;
+		prethoden=momentalen;
+		momentalen=sleden;
+
+		return sleden;
+	}
+}
+
+var temp = add();
+function myFunction () {
+document.getElementById("demo").innerHTML = temp();
+}
+
+</script>
+</body>
+</html>

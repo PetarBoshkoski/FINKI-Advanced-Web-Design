@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	Check in console.		
+<script type="text/javascript">
+	var x = [1, 2, 4];
+	x[10] = 100;
+	x[8] = 8;
+	console.log("Before calling the function fillDefault(): " + x.toString()); // Prints 1,2,4,,,,,,8,,100
+	fillDefault(x);
+
+	console.log("After calling the function fillDefault(): " + x.toString()); // Prinst 1,2,4,0,0,0,0,0,8,0,100
+	function fillDefault(array) {
+		for(var i=0;i<array.length;i++) {
+			if(typeof array[i] === 'undefined') {
+				array[i] = 10;
+			}
+		}
+	}
+
+</script>
+</body>
+</html>

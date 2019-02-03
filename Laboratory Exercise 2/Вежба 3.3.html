@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+<div id="pictureArea"></div>
+<button onclick="replace()">Show a random picture</button>
+
+<script type="text/javascript">
+	var div_pic = document.getElementById('pictureArea');
+	var imgArray = ["http://farm4.staticflickr.com/3691/11268502654_f28f05966c_m.jpg w","http://farm1.staticflickr.com/33/45336904_1aef569b30_n.jpg",
+		"http://farm6.staticflickr.com/5211/5384592886_80a512e2c9.jpg"];
+	var randomBroj = Math.floor(Math.random()*3);
+	
+	function replace() {
+		div_pic.innerHTML = '<img src='+imgArray[randomBroj]+'>';
+		
+	}
+	let x = "Petar"
+	let y = "Boshkoski"
+
+	document.write(`${x} and with surname: ${y}`)	
+</script>
+</body>
+</html>

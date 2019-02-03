@@ -1,0 +1,36 @@
+shades-red {
+  shade: #cccc00; }
+
+html {
+  position: relative;
+  height: 100%;
+  background: #333; }
+  html:before, html:after {
+    position: absolute;
+    content: '';
+    height: 1em;
+    top: 0;
+    left: 0;
+    right: 0; }
+  html:after {
+    top: auto;
+    bottom: 0; }
+  html:before {
+    background: linear-gradient(75deg, #1abc9c 10%, #2ecc71 10%, #2ecc71 20%, #3498db 20%, #3498db 30%, #9b59b6 30%, #9b59b6 40%, #34495e 40%, #34495e 50%, #f1c40f 50%, #f1c40f 60%, #e67e22 60%, #e67e22 70%, #e74c3c 70%, #e74c3c 80%, #ecf0f1 80%, #ecf0f1 90%, #95a5a6 90%);
+    border: 5px solid #000099; }
+  html:after {
+    background: linear-gradient(90deg, #1abc9c 10%, #2ecc71 10%, #2ecc71 12.5%, #3498db 12.5%, #3498db 28%, #9b59b6 28%, #9b59b6 35%, #34495e 35%, #34495e 60%, #f1c40f 60%, #f1c40f 69%, #e67e22 69%, #e67e22 83%, #e74c3c 83%, #e74c3c 88%, #ecf0f1 88%, #ecf0f1 96%, #95a5a6 96%);
+    border: 5px solid #999900; }
+
+body {
+  padding-top: 20px; }
+
+p {
+  text-align: center;
+  color: white;
+  font-family: Arial, sans-serif; }
+
+a {
+  color: white; }
+
+/*# sourceMappingURL=gradients.css.map */

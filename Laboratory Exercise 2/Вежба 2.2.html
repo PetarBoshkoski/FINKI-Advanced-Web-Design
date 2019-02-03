@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div id='seconds-counter'> </div>
+	<div id='firstCall'> </div>
+	<div id='everyOtherCall'> </div>
+	<button id="but" onclick="setTimeout(funcToCall())">Povikaj funkcija prv pat</button>
+	<button onclick="setTimeout(funcToCall1())">Povtorno povikaj funkcija</button>
+<script type="text/javascript">
+
+	var seconds = 0;
+	var el = document.getElementById('seconds-counter');
+	var but = document.getElementById("but");
+	var fc = document.getElementById('firstCall');
+	var eoc = document.getElementById('everyOtherCall');
+	var vreme=0;
+	function incrementSeconds() {
+   		seconds += 1;
+	}
+	setInterval(incrementSeconds, 1000);
+	function funcToCall() {
+		
+		fc.innerText = "Vreme pominato od kreiranjeto do prvoto povikuvanje: " + seconds + " sekundi";
+		but.disabled=true;
+		
+	}
+	function funcToCall1() {
+		
+		momentalno_vreme = new Date().getTime()/1000;
+		eoc.innerText = "Vreme pominato prethodnoto povikuvanje:: " + parseInt(momentalno_vreme-seconds) + " milisekundi";
+		
+	}
+</script>
+</body>
+</html>

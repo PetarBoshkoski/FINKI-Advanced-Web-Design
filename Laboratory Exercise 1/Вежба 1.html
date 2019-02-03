@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+<p>Креирајте вредност, доделете и вредност и прикажете ја:</p>
+<p id="yourID">
+	 
+</p>
+<button onclick="yourFunctionName()">Покажи ја вредноста</button>
+<script>
+	var field = document.getElementById("yourID");
+	var vrednost = 5;
+	var string = "Hello ";
+	field.innerHTML = "<h2>Првичната вредност на променливата е: " + vrednost + "<br>" + " Вредноста на стрингот: " + string + "</h2>";
+ function yourFunctionName(){
+    field.innerHTML = "<h2>Променетата вредност на променливата е: " + parseInt(vrednost+5) + "<br>" + "А вредноста на стрингот: " + string + "Wrld </h2>";
+ //your code
+ }
+</script>
+</body>
+</html>

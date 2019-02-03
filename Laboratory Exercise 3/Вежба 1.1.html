@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+Results in console.
+<script type="text/javascript">
+	
+	class NPC {
+		constructor(name, hitpoints=100) {
+			this.name = name;
+			this.hitpoints = hitpoints;
+		}
+		isDead() {
+			if (this.hitpoints <1) {
+				return true;
+			}
+			return false;
+		}
+	}
+	class Hero extends NPC {
+		
+		constructor(name, hitpoints=100, damage=10) {
+			super(name, hitpoints);
+			this.damage = damage;
+		}
+		status()  {
+			return this.name + " " + this.hitpoints;
+		}
+		critical() {
+			enemyCharacter.hitpoints-=this.damage*1.5;
+		}
+		attack(enemyCharacter) {
+			enemyCharacter.hitpoints-=this.damage;
+			console.log("attacking");
+		}
+		
+	}
+	var randomNumber = Math.floor(Math.random()*40)+10;
+	let arrayOfCharacters = [];
+	for (let i=0;i<randomNumber;i++) {
+		var chooseWhich = Math.round(Math.random());
+		if(chooseWhich) {
+			arrayOfCharacters.push(new Hero("Hero:"+i));
+		}
+			arrayOfCharacters.push(new NPC(i));
+	}
+	while(arrayOfCharacters.length > 1) {
+		 var attacker = Math.floor(Math.random() * arrayOfCharacters.length - 1);
+    	 var defender = Math.floor(Math.random() * arrayOfCharacters.length);
+
+    	 if(attacker!=defender) {
+    	 	if(arrayOfCharacters[attacker] instanceof Hero) {
+    	 		arrayOfCharacters[attacker].attack(arrayOfCharacters[defender]);
+    	 		if(arrayOfCharacters[defender].hitpoints<=0) {
+    	 			arrayOfCharacters.splice(defender,1);
+    	 		}
+    	 	}
+    	 }
+	}
+	console.log("Winner is "+arrayOfCharacters[0].name);
+	console.log("Winner hitpoints: " + arrayOfCharacters[0].hitpoints);
+	
+</script>
+</body>
+</html>

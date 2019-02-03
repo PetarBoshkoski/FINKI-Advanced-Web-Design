@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title>Password strength indicator</title>
+    <link rel='stylesheet' href='css/all.css'>
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+  <body>
+    <div id="app" class="container">
+      <h1>Vue Password Strength Indicator</h1>
+      <label class="frmLabel" for="password">Password</label>
+      <input placeholder="Enter your password" name="password" class="frmField" type="password" @input="checkInput" v-model="message" />
+      <p class="frmValidation" :class="{'frmValidation--passed' : message.length > 7}">
+        <i class="frmIcon fas" :class="message.length > 7 ? 'fa-check' : 'fa-times'"></i>
+        Longer than 7 characters
+      </p>
+      <p class="frmValidation" :class="{'frmValidation--passed' :has_uppercase }">
+        <i class="frmIcon fas" :class="has_uppercase ? 'fa-check' : 'fa-times'"></i>
+        Has a capital letter
+      </p>
+      <p class="frmValidation" :class="{'frmValidation--passed' :has_lowercase }">
+        <i class="frmIcon fas" :class="has_lowercase ? 'fa-check' : 'fa-times'"></i>
+        Has a lowercase letter
+      </p>
+      <p class="frmValidation" :class="{'frmValidation--passed' : has_number }">
+        <i class="frmIcon fas" :class="has_number ? 'fa-check' : 'fa-times'"></i>
+        Has a number
+      </p>
+      <p class="frmValidation" :class="{'frmValidation--passed' : has_special }">
+        <i class="frmIcon fas" :class="has_special ? 'fa-check' : 'fa-times'"></i>
+        Has a special character
+      </p>
+    </div><!-- #app  -->
+    <script src='js/vue.2.1.10.min.js'></script>
+    <script  src="index.js"></script>
+    <script type="text/javascript">
+      var app = new Vue({
+        el: '#app',
+        data: {
+          message: '',
+          has_uppercase: false,
+          has_lowercase: false,
+          has_number: false,
+          has_special: false
+        },
+        methods: {
+          checkInput: function() {
+          hasLowerCase = this.has_lowercase = /[a-z]/.test(this.message);
+          hasUpperCase = this.has_uppercase = /[A-Z]/.test(this.message);
+          hasNumber = this.has_number = /[0-9]/.test(this.message);
+          hasSpecialCharacter = this.has_special = /[!@#$%^&*)(+=._-]/.test(this.message);
+          console.log(hasLowerCase);
+          if(hasLowerCase) {
+            has_lowercase = true;
+          }
+          else {
+            has_lowercase = false;
+          }
+          if(hasUpperCase) {
+            has_uppercase = true;
+          }
+          else {
+            has_uppercase = false;
+          }
+          if(hasNumber) {
+            has_number = true;
+          }
+          else {
+            has_number = false;
+          }
+          if(hasSpecialCharacter) {
+            has_special = true;
+          }
+          else {
+            has_special = false
+          }
+        }
+      }
+      })
+    </script>
+  </body>
+</html>

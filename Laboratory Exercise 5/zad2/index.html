@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>VueJS 2 Simple Shopping cart</title>
+  
+  
+  <link rel='stylesheet prefetch' href='css/bootstrap.min.css'>
+  <link rel="stylesheet" href="css/style.css">
+
+  
+</head>
+
+<body>
+
+  <div id="app" class="container">
+   <div class="text-right"><button class="btn btn-primary" data-toggle="modal" data-target="#cartModal">Cart ({{cartItems.length}})</button></div>
+  
+   <!-- Modal --> 
+   <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+         <div class="modal-content">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span></button>
+               <h4 class="modal-title" id="myModalLabel">Cart</h4>
+            </div>
+            <div class="modal-body">
+			   <!-- This is an inline component. It works as intended for all items in cartItems array -->
+              
+                  <div>
+                     <table class="table table-cart">
+                        <tr v-for="(item,index) in cartItems" v-if="item.showIf">
+                           <td>{{item.title}}</td>
+                           <td style="width:120px">QTY:
+                              <input v-model="item.qty" class="form-control input-qty" type="number">
+                           </td>
+                           <td class="text-right">${{item.price | formatCurrency}}</td>
+                           <td>
+                              <button @click="removeItem(index)"><span> Remove </span></button>
+                           </td>
+                        </tr>
+                        <tr v-show="cartItems.length === 0">
+                           <td colspan="4" class="text-center">Cart is empty</td>
+                        </tr>
+                        <tr v-show="cartItems.length > 0">
+                           <td></td>
+                           <td class="text-right">Cart Total</td>
+                           <td class="text-right">${{Total(item) | formatCurrency}}</td>
+                           <td></td>
+                        </tr>
+                     </table>
+                  </div>
+                  <!-- /.container -->
+
+               
+            </div>
+            <div class="modal-footer">
+               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+         </div>
+      </div>
+   </div>
+
+   <div class="container">
+      <div class="row">
+         <div class="col-xs-3 text-center" v-for="(item,index) in itemsForSale" v-if="item.showIf">
+            <img class="img-responsive" alt="" v-bind:src="item.img">
+            <h5>{{ item.title }}</h5>
+            <h6>${{ item.price | formatCurrency }}</h6>
+            <p class="text-center"><input v-model="item.qty" type="number" class="form-control" placeholder="Qty" min="1"/></p>
+							 
+               <button class="btn btn-sm btn-primary"  @click="addToCart(item)" v-once>Add to Cart</button>
+            </p>
+         </div>
+      </div>
+   </div>
+</div>
+
+	<script src='js/vue.2.1.10.min.js'></script>
+	<script src='js/jquery.3.1.1.min.js'></script>
+	<script src='js/bootstrap.3.3.7.min.js'></script>
+	<script src="js/app.js"></script>
+
+   <script type="text/javascript">
+      var app = new Vue({
+         el: '#app',
+
+         data: {
+            item: '',
+            itemsForSale: [
+            {     
+               title: 'ThinkPad_x280',
+               img: "img/ThinkPad_x280.png",
+               qty: 1,
+               price: 1000,
+               showIf: true
+            },
+            {
+               title: 'Apple Macbook Pro',
+               img: "img/MacBook-Pro.png",
+               qty: 1,
+               price: 2500,
+               showIf: true
+            },
+            {
+               title: 'Amazon Kindle Ebook',
+               img: "img/Amazon_Kindle.png",
+               qty: 1,
+               price: 150,
+               showIf: true
+            },
+            {
+               title: 'USB-C to HDMI cable',
+               img: "img/usbC_to_hdmi.jpg",
+               qty: 1,
+               price: 10,
+               showIf: true
+            },
+            ],
+            cartItems: [
+            
+            ],
+         },
+         methods: {
+            addToCart: function(item) {
+               isInCart=false;
+               this.cartItems.forEach(function(e) {
+                  if(item.title == e.title) {
+                     isInCart = true;
+                  }
+               })
+               if(!isInCart){
+               this.cartItems.push(item);
+               }
+            },
+            Total: function() {
+               total = 0;
+               this.cartItems.forEach(function(e) {
+               total += e.price * e.qty;
+               })
+            return total;  
+            },
+            removeItem: function(index) {      
+                  app.cartItems.splice(index,1);
+            }
+         },
+         filters: {
+            formatCurrency: function(value) {
+            let val = (value/1).toFixed(2).replace('.', ',')
+            return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")    
+            }
+         }
+      });
+   </script>
+</body>
+</html>
